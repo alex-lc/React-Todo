@@ -11,7 +11,11 @@ const TodoList = props => {
             {
                 props.items.map((item, index) => {
                     return (
-                        <Todo key={index} item={item} completeTodo={props.completeTodo} cursorChange={props.cursorChange} />
+                        <Todo
+                            key={index}
+                            item={item}
+                            completeTodo={props.completeTodo}
+                            cursorChange={props.cursorChange} />
                     )
                 })
             }

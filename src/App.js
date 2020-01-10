@@ -50,12 +50,23 @@ class App extends React.Component {
     event.target.style.cursor = 'pointer';
   }
 
+  removeCompleted = event => {
+    let removed = this.state.items.filter((item) => event.target.completed === true);
+    console.log(removed);
+  };
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm handleChange={this.handleChange} onSubmit={this.onSubmit} />
-        <TodoList items={this.state.items} completeTodo={this.completeTodo} cursorChange={this.cursorChange} />
+        <TodoForm
+          handleChange={this.handleChange}
+          onSubmit={this.onSubmit}
+          removeCompleted={this.removeCompleted} />
+        <TodoList
+          items={this.state.items}
+          completeTodo={this.completeTodo}
+          cursorChange={this.cursorChange} />
       </div>
     );
   }
