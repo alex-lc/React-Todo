@@ -40,7 +40,11 @@ class App extends React.Component {
     else {
       event.target.style.textDecoration = 'none';
     }
-  };
+
+    let done = this.state.items.filter((item) => item.task === event.target.textContent);
+    done[0].completed !== true ? done[0].completed = true : done[0].completed = false;
+    console.log(done[0].task, done[0].completed);
+  }
 
   cursorChange = event => {
     event.target.style.cursor = 'pointer';
