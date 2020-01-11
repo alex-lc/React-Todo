@@ -30,6 +30,7 @@ class App extends React.Component {
         completed: false
       }]
     });
+    this.setState({ activeTodo: '' });
   };
 
   completeTodo = event => {
@@ -52,7 +53,7 @@ class App extends React.Component {
   removeCompleted = event => {
     let removed = this.state.items.filter((item) => event.target.completed === true);
     console.log(removed);
-  };
+  }
 
   render() {
     return (
@@ -61,7 +62,8 @@ class App extends React.Component {
         <TodoForm
           handleChange={this.handleChange}
           onSubmit={this.onSubmit}
-          removeCompleted={this.removeCompleted} />
+          removeCompleted={this.removeCompleted}
+          task={this.state.activeTodo} />
         <TodoList
           items={this.state.items}
           completeTodo={this.completeTodo}
