@@ -30,7 +30,6 @@ class App extends React.Component {
         completed: false
       }]
     });
-    this.setState({ activeTodo: '' });
   };
 
   completeTodo = event => {
