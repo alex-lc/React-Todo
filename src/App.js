@@ -1,8 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 
 // components
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -78,19 +91,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoForm
-          handleChange={this.handleChange}
-          onSubmit={this.onSubmit}
-          removeCompleted={this.removeCompleted}
-          task={this.state.activeTodo}
-          items={this.state.items} />
-        <TodoList
-          items={this.state.items}
-          completeTodo={this.completeTodo}
-          cursorChange={this.cursorChange} />
-      </div>
+      <Container>
+        <div>
+          <h2>todoer.</h2>
+          <TodoForm
+            handleChange={this.handleChange}
+            onSubmit={this.onSubmit}
+            removeCompleted={this.removeCompleted}
+            task={this.state.activeTodo}
+            items={this.state.items} />
+          <TodoList
+            items={this.state.items}
+            completeTodo={this.completeTodo}
+            cursorChange={this.cursorChange} />
+        </div>
+      </Container>
     );
   }
 }
