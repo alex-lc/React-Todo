@@ -7,13 +7,51 @@ import TodoForm from './components/TodoComponents/TodoForm';
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
+  width: 100%;
+
+  .header {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #33314a;
+    border-bottom: 1px solid #2a283d;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-left: 15%;
+      color: #fafafa;
+      margin-bottom: 0.25rem;
+    }
+
+    p.tagline {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-left: 15%;
+      color: #fafafa;
+      margin-top: 0.25rem;
+    }
+  }
 
   div {
     display: flex;
     flex-direction: column;
+    width: 50%;
+  }
+
+  .instructions {
+    margin-top: 5%;
+    text-align: center;
+    font-size: 1.4rem;
+
+    p {
+      margin: 0.5rem 0;
+    }
   }
 `;
 
@@ -92,8 +130,15 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        <div>
+        <div className="header">
           <h2>todoer.</h2>
+          <p className="tagline">manage your life.</p>
+        </div>
+        <div className="instructions">
+          <p>Simply enter in a task you need to complete, and then click on it to mark it as complete.</p>
+          <p>You can also clear your completed todos using the 'Clear Completed' button.</p>
+        </div>
+        <div>
           <TodoForm
             handleChange={this.handleChange}
             onSubmit={this.onSubmit}

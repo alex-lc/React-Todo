@@ -1,9 +1,14 @@
-// your components will all go in this `component` directory.
-// feel free to change this component.js into TodoList.js
 import React from 'react';
+import styled from 'styled-components';
 
 // components
 import Todo from './Todo';
+
+const ListContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;
 
 const TodoList = props => {
     return (
