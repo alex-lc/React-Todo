@@ -7,7 +7,7 @@ const TodoContainer = styled.div`
     font-size: 1.4rem;
     font-weight: 300;
     // border-radius: 0.3rem;
-    // background: #cbe9c8;
+    background: #cbe9c8;
     margin: 1rem 0;
     // transition: all 300ms;
 
@@ -19,13 +19,13 @@ const TodoContainer = styled.div`
 
 const Todo = props => {
     return (
-            <TodoContainer
-                // if the item's completed property is true, then strikethrough it, otherwise do nothing
-                style={props.item.completed ? { textDecoration: 'line-through' } : null}
-                onClick={() => props.completeTodo(props.item.id)} // invoke the completeTodo function and pass it our current todo item id
-                onMouseEnter={props.cursorChange}>
-                {props.item.task}
-            </TodoContainer>
+        <TodoContainer
+            // if the item's completed property is true, then strikethrough it, otherwise do nothing
+            style={props.item.completed ? { textDecoration: 'line-through' } : null}
+            onClick={() => props.completeTodo(props.item.id)} // invoke the completeTodo function and pass it our current todo item id
+            onMouseEnter={props.cursorChange}>
+            <p>{props.item.task}</p>
+        </TodoContainer>
     )
 }
 

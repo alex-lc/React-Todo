@@ -48,9 +48,10 @@ const Container = styled.div`
     margin-top: 5%;
     text-align: center;
     font-size: 1.4rem;
+    line-height: 2.4rem;
 
     p {
-      margin: 0.5rem 0;
+      margin: 1rem 0;
     }
   }
 `;
@@ -62,59 +63,37 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: [],
-      activeTodo: '',
+      items: []
     };
   }
 
-  // set our current activeTodo state to the value of our text input
-  handleChange = event => {
-    this.setState({ activeTodo: event.target.value });
-  };
-
-  // when the form is submitted, set the state of our items array to any current items, plus the newly created item
-  onSubmit = event => {
-    event.preventDefault();
-    this.setState({
-      items: [...this.state.items, {
-        task: this.state.activeTodo,
-        id: Date.now(),
-        completed: false,
-      }]
-    });
-    this.setState({ activeTodo: '' }); // reset our activeTodo state to clear the text input on submit
-  };
-
-  // toggle completion of our todo items
   completeTodo = (id) => {
-
-    // Didn't work, but keeping for reference:
-    // if (event.target.style.textDecoration !== 'line-through') {
-    //   event.target.style.textDecoration = 'line-through';
-    // }
-    // else {
-    //   event.target.style.textDecoration = 'none';
-    // }
-
-    // let done = this.state.items.filter((item) => item.task === event.target.textContent);
-    // done[0].completed !== true ? done[0].completed = true : done[0].completed = false;
-    // console.log(done[0].task, done[0].completed);
-
-    // create a new array of items that match the current id of the item that was clicked on
-    // set the completed value to whatver it is not
-    let items = this.state.items.slice();
-    items = items.map((item) => {
+    let newItems = this.state.items.map((item) => {
       if (item.id === id) {
-        item.completed = !item.completed;
-        return item;
+        return {
+          ...item,
+          completed: !item.completed
+        };
       }
       else {
         return item;
       }
+    });
+
+    this.setState({ items: newItems });
+
+  }
+
+  addTodo = itemName => {
+    const newTodo = {
+      task: itemName,
+      id: Date.now(),
+      completed: false
+    }
+
+    this.setState({
+      items: [...this.state.items, newTodo]
     })
-
-    this.setState({ items });
-
   }
 
   // just adding some additional styling for when an item is hovered over
@@ -122,9 +101,12 @@ class App extends React.Component {
     event.target.style.cursor = 'pointer';
   }
 
-  removeCompleted = event => {
-    let notCompleted = this.state.items.filter((item) => item.completed === false);
-    this.setState({ items: notCompleted });
+  removeCompleted = (event) => {
+    event.preventDefault();
+    let incomplete = this.state.items.filter((item) => item.completed !== true);
+    // console.log(incomplete);
+    this.setState({ items: incomplete });
+    console.log(this.state.items);
   }
 
   render() {
@@ -140,11 +122,12 @@ class App extends React.Component {
         </div>
         <div>
           <TodoForm
-            handleChange={this.handleChange}
-            onSubmit={this.onSubmit}
+            // handleChange={this.handleChange}
+            // onSubmit={this.onSubmit}
             removeCompleted={this.removeCompleted}
             task={this.state.activeTodo}
-            items={this.state.items} />
+            items={this.state.items}
+            addTodo={this.addTodo} />
           <TodoList
             items={this.state.items}
             completeTodo={this.completeTodo}

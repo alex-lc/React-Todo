@@ -46,17 +46,34 @@ const Form = styled.form`
     }
 `;
 
-const TodoForm = props => {
-    return (
-        <Form onSubmit={props.onSubmit}>
-            <input type="text" name="todoItem" value={props.task} onChange={props.handleChange} onSubmit={props.clearField} autoComplete="off" />
-            <div className="controls">
-                <button type="submit">Add Todo</button>
-                <button onClick={props.removeCompleted}>Clear Completed</button>
-            </div>
-        </Form>
-    )
-}
+class TodoForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            newTodo: ''
+        }
+    }
 
+    handleChanges = (event) => {
+        this.setState({ newTodo: event.target.value });
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.addTodo(this.state.newTodo);
+    }
+
+    render() {
+        return (
+            <Form onSubmit={this.handleSubmit}>
+                <input type="text" name="todoItem" onChange={this.handleChanges} autoComplete="off" />
+                <div className="controls">
+                    <button type="submit">Add Todo</button>
+                    <button onClick={this.props.removeCompleted}>Clear Completed</button>
+                </div>
+            </Form>
+        );
+    }
+}
 
 export default TodoForm;
