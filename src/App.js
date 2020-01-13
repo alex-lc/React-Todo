@@ -18,6 +18,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     background: #33314a;
     border-bottom: 1px solid #2a283d;
 
@@ -41,7 +42,8 @@ const Container = styled.div`
   div {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 80%;
+    align-items: center;
   }
 
   .instructions {

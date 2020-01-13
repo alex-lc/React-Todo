@@ -12,7 +12,7 @@ const ListContainer = styled.div`
 
 const TodoList = props => {
     return (
-        <div>
+        <ListContainer>
             {
                 props.items.map((item) => { // map over our items and return the single todo item
                     return (
@@ -24,7 +24,7 @@ const TodoList = props => {
                     )
                 })
             }
-        </div>
+        </ListContainer>
     )
 }
 

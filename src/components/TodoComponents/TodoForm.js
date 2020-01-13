@@ -42,7 +42,7 @@ const Form = styled.form`
         flex-direction: row;
         justify-content: center;
         width: 100%;
-        margin-top: 1rem;
+        margin: 1rem 0 5rem;
     }
 `;
 

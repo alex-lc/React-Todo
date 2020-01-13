@@ -6,15 +6,15 @@ const TodoContainer = styled.div`
     padding: 1rem;
     font-size: 1.4rem;
     font-weight: 300;
-    // border-radius: 0.3rem;
+    border-radius: 0.3rem;
     background: #cbe9c8;
     margin: 1rem 0;
-    // transition: all 300ms;
+    transition: all 300ms;
 
-    // &:hover {
-    //     transition: background 300ms;
-    //     background: #bde3bb;
-    // }
+    &:hover {
+        transition: background 300ms;
+        background: #add1ab;
+    }
 `;
 
 const Todo = props => {
